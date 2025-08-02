@@ -1,0 +1,9 @@
+rootProject.name = 'iam-microservices-platform'
+
+include 'iam-common-utilities'
+include 'iam-user-service'
+include 'iam-auth-service'
+include 'iam-api-gateway'
+//include 'iam-authorization-service'
+//include 'iam-chat-service'
+//include 'iam-notification-service'

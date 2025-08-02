@@ -67,3 +67,15 @@
 hs_err_pid*
 replay_pid*
 .mtj.tmp/
+
+# macOS
+.DS_Store
+
+# IDEs
+.idea/
+.vscode/
+
+# Gradle
+.gradle/
+build/
+gradle/
