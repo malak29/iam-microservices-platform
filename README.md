@@ -1,1 +1,188 @@
-# iam-microservices-platform
+
+# IAM Microservices Platform
+
+Welcome to the **IAM Microservices Platform** — a modular, scalable system for Identity and Access Management (IAM). This platform consists of multiple independent microservices that together provide user management, authentication, and infrastructure orchestration.
+
+---
+
+## 📂 Repository Structure
+
+The platform is organized into multiple repositories (folders) inside this main repo:
+
+```
+
+iam-microservices-platform/
+├── iam-common-utilities/       # Shared code & utilities used by all services
+├── iam-user-service/           # Handles user CRUD operations and profiles
+├── iam-auth-service/           # Handles authentication, JWT tokens, login/logout
+├── iam-infrastructure/         # Docker & infrastructure configuration (Postgres, Redis, Vault, etc.)
+├── iam-database-postgres/      # Database schema, migrations, and seed data for PostgreSQL
+├── iam-authorization-service/  # (Future) Authorization service placeholder
+├── iam-chat-service/           # (Future) Chat service placeholder
+├── iam-notification-service/   # (Future) Notification service placeholder
+├── iam-redis-config/           # (Future) Redis configuration and setup
+├── iam-vault-config/           # (Future) Vault configuration and secrets management
+├── iam-database-mongo/         # (Future) MongoDB schema and data for chat service
+├── iam-frontend-react/         # (Future) React frontend for the platform
+├── iam-infrastructure/         # Docker-compose and environment setup
+├── architecture/               # Architecture diagrams and design docs
+├── gradle/                     # Gradle build setup
+├── build/                      # Build output directory (ignored in git)
+└── README.md                   # This README file
+
+````
+
+---
+
+## 🏗 Architecture Diagrams
+
+### System Overview Diagram  
+*(Placeholder for high-level system architecture showing services and their interactions)*
+
+
+
+---
+
+### Database & Service Interaction Diagram  
+*(Placeholder for detailed database schema and how services connect to the DB and each other)*
+
+
+
+---
+
+## 🚀 Getting Started — Setup & Run
+
+### Prerequisites
+
+- [Java 21+](https://adoptium.net/)
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+- [Gradle](https://gradle.org/install/)
+- PostgreSQL and Redis will run inside Docker containers
+
+### Step 1: Clone the repo
+
+```bash
+git clone https://github.com/your-username/iam-microservices-platform.git
+cd iam-microservices-platform
+````
+
+### Step 2: Environment Variables
+
+Create a `.env.local` file in `iam-infrastructure/` with the following variables:
+
+```bash
+POSTGRES_DB=iam_db
+POSTGRES_USER=iam_user
+POSTGRES_PASSWORD=your_password
+POSTGRES_PORT=5432
+
+REDIS_PORT=6379
+
+VAULT_PORT=8200
+VAULT_ROOT_TOKEN=dev-token
+
+MONGO_PORT=27017
+MONGO_ROOT_USER=admin
+MONGO_ROOT_PASSWORD=password
+MONGO_DB=iam_chat
+```
+
+### Step 3: Start Infrastructure
+
+Use Docker Compose to start Postgres, Redis, Vault, and MongoDB:
+
+```bash
+cd iam-infrastructure
+docker-compose up -d
+```
+
+This will:
+
+* Start PostgreSQL on port 5432
+* Start Redis on port 6379
+* Start Vault on port 8200
+* Start MongoDB on port 27017
+* Start Adminer (DB UI) on port 8080
+
+### Step 4: Initialize the Database
+
+Postgres will automatically run SQL scripts from `iam-database-postgres/init/` to create tables and seed reference data.
+
+You can connect to Postgres to verify:
+
+```bash
+docker exec -it iam-postgres psql -U iam_user -d iam_db
+```
+
+Run `\dt` to list tables.
+
+### Step 5: Build & Run Microservices
+
+Back in the root folder (`iam-microservices-platform`), run:
+
+```bash
+./gradlew build
+```
+
+Then run services individually:
+
+```bash
+# User Service
+java -jar iam-user-service/build/libs/iam-user-service.jar
+
+# Auth Service
+java -jar iam-auth-service/build/libs/iam-auth-service.jar
+```
+
+Alternatively, set up your IDE (IntelliJ, Eclipse) to run these Spring Boot applications.
+
+### Step 6: Test APIs
+
+* User Service: [http://localhost:8081/api/v1/users](http://localhost:8081/api/v1/users)
+* Auth Service: [http://localhost:8082/api/v1/auth/login](http://localhost:8082/api/v1/auth/login)
+
+Use Postman or curl to test endpoints.
+
+---
+
+## 📝 Notes
+
+* All microservices share common utilities located in `iam-common-utilities`.
+* The system uses JWT tokens stored in Redis for session management.
+* Database schema is designed with proper foreign keys for referential integrity.
+* Docker Compose orchestrates infrastructure services for ease of development.
+* Currently, only User and Auth services are fully implemented; others are placeholders for future work.
+
+---
+
+## 🛠️ Future Work
+
+* API Gateway to route requests centrally
+* Service-to-service communication (e.g., Auth service calls User service)
+* Add more microservices: Authorization, Chat, Notifications
+* Frontend React app to interact with backend APIs
+* Secure Redis and Vault for production readiness
+* Add CI/CD pipelines and monitoring
+
+---
+
+## 🙋 How to Contribute
+
+* Fork the repo and create feature branches
+* Follow Java and Spring Boot best practices
+* Add tests for new features
+* Open pull requests with clear descriptions
+
+---
+
+## 📞 Contact
+
+For questions or collaboration, contact **Malak Parmar**
+Email: [malakparmar.29@gmail.com](mailto:malakparmar.29@gmail.com)
+GitHub: [https://github.com/malak29](https://github.com/malak29)
+
+---
+
+Thanks for checking out the IAM Microservices Platform! 🚀
+
