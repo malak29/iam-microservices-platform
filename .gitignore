@@ -14,8 +14,8 @@
 /iam-vault-config/**
 
 # Except keep the folder itself and .gitkeep file
-!/iam-api-gateway/
-!/iam-api-gateway/.gitkeep
+/iam-api-gateway/
+/iam-api-gateway/.gitkeep
 
 !/iam-auth-service/
 !/iam-auth-service/.gitkeep
