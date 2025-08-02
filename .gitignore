@@ -1,24 +1,69 @@
-# Compiled class file
-*.class
+# Ignore everything inside each microservice folder
+/iam-api-gateway/**
+/iam-auth-service/**
+/iam-authorization-service/**
+/iam-chat-service/**
+/iam-common-utilities/**
+/iam-database-mongo/**
+/iam-database-postgres/**
+/iam-frontend-react/**
+/iam-infrastructure/**
+/iam-notification-service/**
+/iam-redis-config/**
+/iam-user-service/**
+/iam-vault-config/**
 
-# Log file
-*.log
+# Except keep the folder itself and .gitkeep file
+!/iam-api-gateway/
+!/iam-api-gateway/.gitkeep
 
-# BlueJ files
-*.ctxt
+!/iam-auth-service/
+!/iam-auth-service/.gitkeep
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+!/iam-authorization-service/
+!/iam-authorization-service/.gitkeep
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
+!/iam-chat-service/
+!/iam-chat-service/.gitkeep
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+!/iam-common-utilities/
+!/iam-common-utilities/.gitkeep
+
+!/iam-database-mongo/
+!/iam-database-mongo/.gitkeep
+
+!/iam-database-postgres/
+!/iam-database-postgres/.gitkeep
+
+!/iam-frontend-react/
+!/iam-frontend-react/.gitkeep
+
+!/iam-infrastructure/
+!/iam-infrastructure/.gitkeep
+
+!/iam-notification-service/
+!/iam-notification-service/.gitkeep
+
+!/iam-redis-config/
+!/iam-redis-config/.gitkeep
+
+!/iam-user-service/
+!/iam-user-service/.gitkeep
+
+!/iam-vault-config/
+!/iam-vault-config/.gitkeep
+
+# General build/log ignores (for root)
+/*.class
+/*.log
+/*.ctxt
+/*.jar
+/*.war
+/*.nar
+/*.ear
+/*.zip
+/*.tar.gz
+/*.rar
 hs_err_pid*
 replay_pid*
+.mtj.tmp/
