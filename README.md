@@ -42,8 +42,8 @@ This monorepo hosts multiple microservices. Each microservice has its own Git re
 | Authorization Service    | [iam-authorization-service](https://github.com/malak29/iam-authorization-service.git) |
 | Chat Service             | [iam-chat-service](https://github.com/malak29/iam-chat-service.git)             |
 | Common Utilities         | [iam-common-utilities](https://github.com/malak29/iam-common-utilities.git)     |
-| Database (Mongo)         | [iam-database-mongo](https://github.com/malak29/iam-database-mongo.git)         |
-| Database (Postgres)      | [iam-database-postgres](https://github.com/malak29/iam-database-postgres.git)   |
+| Chat Database (Mongo)    | [iam-database-mongo](https://github.com/malak29/iam-database-mongo.git)         |
+| User Database (Postgres) | [iam-database-postgres](https://github.com/malak29/iam-database-postgres.git)   |
 | Frontend (React)         | [iam-frontend-react](https://github.com/malak29/iam-frontend-react.git)         |
 | Infrastructure           | [iam-infrastructure](https://github.com/malak29/iam-infrastructure.git)         |
 | Notification Service     | [iam-notification-service](https://github.com/malak29/iam-notification-service.git) |
