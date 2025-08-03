@@ -72,26 +72,48 @@ This monorepo hosts multiple microservices. Each microservice has its own Git re
 
 ## 🚀 Getting Started — Setup & Run
 
+Sure! Here's an updated **"🚀 Getting Started — Setup & Run"** section with the setup script step added. This tells users to run `setup.sh` first, which will clone all the individual microservice repos into their respective folders:
+
+---
+
+## 🚀 Getting Started — Setup & Run
+
 ### Prerequisites
 
-- [Java 21+](https://adoptium.net/)
-- [Docker](https://www.docker.com/)
-- [Docker Compose](https://docs.docker.com/compose/)
-- [Gradle](https://gradle.org/install/)
-- PostgreSQL and Redis will run inside Docker containers
+* [Java 21+](https://adoptium.net/)
+* [Docker](https://www.docker.com/)
+* [Docker Compose](https://docs.docker.com/compose/)
+* [Gradle](https://gradle.org/install/)
+* PostgreSQL and Redis will run inside Docker containers
 
-### Step 1: Clone the repo
+---
+
+### Step 1: Clone the parent platform repo
 
 ```bash
-git clone https://github.com/your-username/iam-microservices-platform.git
+git clone https://github.com/malak29/iam-microservices-platform.git
 cd iam-microservices-platform
-````
+```
 
-### Step 2: Environment Variables
+---
+
+### Step 2: Pull Microservice Repos
+
+All microservices are in their own repositories. Use the setup script to pull them into the correct folders:
+
+```bash
+bash setup.sh
+```
+
+This will automatically clone each service into its respective folder under this project. Each has its own independent Git history.
+
+---
+
+### Step 3: Environment Variables
 
 Create a `.env.local` file in `iam-infrastructure/` with the following variables:
 
-```bash
+```env
 POSTGRES_DB=iam_db
 POSTGRES_USER=iam_user
 POSTGRES_PASSWORD=your_password
@@ -108,7 +130,9 @@ MONGO_ROOT_PASSWORD=password
 MONGO_DB=iam_chat
 ```
 
-### Step 3: Start Infrastructure
+---
+
+### Step 4: Start Infrastructure
 
 Use Docker Compose to start Postgres, Redis, Vault, and MongoDB:
 
@@ -125,7 +149,9 @@ This will:
 * Start MongoDB on port 27017
 * Start Adminer (DB UI) on port 8080
 
-### Step 4: Initialize the Database
+---
+
+### Step 5: Initialize the Database
 
 Postgres will automatically run SQL scripts from `iam-database-postgres/init/` to create tables and seed reference data.
 
@@ -137,7 +163,9 @@ docker exec -it iam-postgres psql -U iam_user -d iam_db
 
 Run `\dt` to list tables.
 
-### Step 5: Build & Run Microservices
+---
+
+### Step 6: Build & Run Microservices
 
 Back in the root folder (`iam-microservices-platform`), run:
 
@@ -155,9 +183,11 @@ java -jar iam-user-service/build/libs/iam-user-service.jar
 java -jar iam-auth-service/build/libs/iam-auth-service.jar
 ```
 
-Alternatively, set up your IDE (IntelliJ, Eclipse) to run these Spring Boot applications.
+Or run them from your IDE.
 
-### Step 6: Test APIs
+---
+
+### Step 7: Test APIs
 
 * User Service: [http://localhost:8081/api/v1/users](http://localhost:8081/api/v1/users)
 * Auth Service: [http://localhost:8082/api/v1/auth/login](http://localhost:8082/api/v1/auth/login)
