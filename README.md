@@ -70,13 +70,9 @@ This monorepo hosts multiple microservices. Each microservice has its own Git re
 
 ---
 
-## 🚀 Getting Started — Setup & Run
-
-Sure! Here's an updated **"🚀 Getting Started — Setup & Run"** section with the setup script step added. This tells users to run `setup.sh` first, which will clone all the individual microservice repos into their respective folders:
-
+## 🚀 Getting Started — Download Setup & Run
 ---
 
-## 🚀 Getting Started — Setup & Run
 
 ### Prerequisites
 
@@ -102,7 +98,7 @@ cd iam-microservices-platform
 All microservices are in their own repositories. Use the setup script to pull them into the correct folders:
 
 ```bash
-bash setup.sh
+bash getAllRepos.sh
 ```
 
 This will automatically clone each service into its respective folder under this project. Each has its own independent Git history.
