@@ -31,6 +31,26 @@ iam-microservices-platform/
 └── README.md                   # This README file
 
 ````
+## Repositories links
+
+This monorepo hosts multiple microservices. Each microservice has its own Git repository and is managed as a Git submodule.
+
+| Service                  | Repository Link                                                                 |
+|--------------------------|----------------------------------------------------------------------------------|
+| API Gateway              | [iam-api-gateway](https://github.com/malak29/iam-api-gateway.git)               |
+| Auth Service             | [iam-auth-service](https://github.com/malak29/iam-auth-service.git)             |
+| Authorization Service    | [iam-authorization-service](https://github.com/malak29/iam-authorization-service.git) |
+| Chat Service             | [iam-chat-service](https://github.com/malak29/iam-chat-service.git)             |
+| Common Utilities         | [iam-common-utilities](https://github.com/malak29/iam-common-utilities.git)     |
+| Database (Mongo)         | [iam-database-mongo](https://github.com/malak29/iam-database-mongo.git)         |
+| Database (Postgres)      | [iam-database-postgres](https://github.com/malak29/iam-database-postgres.git)   |
+| Frontend (React)         | [iam-frontend-react](https://github.com/malak29/iam-frontend-react.git)         |
+| Infrastructure           | [iam-infrastructure](https://github.com/malak29/iam-infrastructure.git)         |
+| Notification Service     | [iam-notification-service](https://github.com/malak29/iam-notification-service.git) |
+| Redis Config             | [iam-redis-config](https://github.com/malak29/iam-redis-config.git)             |
+| User Service             | [iam-user-service](https://github.com/malak29/iam-user-service.git)             |
+| Vault Config             | [iam-vault-config](https://github.com/malak29/iam-vault-config.git)             |
+
 
 ---
 
