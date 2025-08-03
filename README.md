@@ -33,7 +33,7 @@ iam-microservices-platform/
 ````
 ## Repositories links
 
-This monorepo hosts multiple microservices. Each microservice has its own Git repository and is managed as a Git submodule.
+This monorepo hosts multiple microservices. Each microservice has its own Git repository.
 
 | Service                  | Repository Link                                                                 |
 |--------------------------|----------------------------------------------------------------------------------|
