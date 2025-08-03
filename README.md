@@ -17,13 +17,13 @@ iam-microservices-platform/
 ├── iam-auth-service/           # Handles authentication, JWT tokens, login/logout
 ├── iam-infrastructure/         # Docker & infrastructure configuration (Postgres, Redis, Vault, etc.)
 ├── iam-database-postgres/      # Database schema, migrations, and seed data for PostgreSQL
-├── iam-authorization-service/  # (Future) Authorization service placeholder
-├── iam-chat-service/           # (Future) Chat service placeholder
-├── iam-notification-service/   # (Future) Notification service placeholder
-├── iam-redis-config/           # (Future) Redis configuration and setup
-├── iam-vault-config/           # (Future) Vault configuration and secrets management
-├── iam-database-mongo/         # (Future) MongoDB schema and data for chat service
-├── iam-frontend-react/         # (Future) React frontend for the platform
+├── iam-authorization-service/  # Authorization service placeholder
+├── iam-chat-service/           # Chat service placeholder
+├── iam-notification-service/   # Notification service placeholder
+├── iam-redis-config/           # Redis configuration and setup
+├── iam-vault-config/           # Vault configuration and secrets management
+├── iam-database-mongo/         # MongoDB schema and data for chat service
+├── iam-frontend-react/         # React frontend for the platform
 ├── iam-infrastructure/         # Docker-compose and environment setup
 ├── architecture/               # Architecture diagrams and design docs
 ├── gradle/                     # Gradle build setup
