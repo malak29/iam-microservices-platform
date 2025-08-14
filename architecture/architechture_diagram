@@ -1,0 +1,160 @@
+graph TB
+    %% Frontend Layer
+    subgraph "Frontend Layer"
+        FE[React Frontend<br/>Port 3000<br/>iam-frontend-react]
+    end
+    
+    %% API Gateway Layer
+    subgraph "API Gateway Layer"
+        GW[API Gateway<br/>Port 8080<br/>iam-api-gateway]
+    end
+    
+    %% Microservices Layer
+    subgraph "Microservices Layer"
+        subgraph "Core Services"
+            US[User Service<br/>Port 8081<br/>Spring Boot + JPA<br/>CRUD Operations]
+            AS[Auth Service<br/>Port 8082<br/>Spring Boot + JWT<br/>Login/Logout/Refresh]
+            CS[Chat Service<br/>Port 8083<br/>Spring WebFlux<br/>Real-time Messaging]
+        end
+        
+        subgraph "Additional Services"
+            AZ[Authorization Service<br/>Port 8084<br/>Role-Based Access]
+            NS[Notification Service<br/>Port 8085<br/>Email & Push Notifications]
+        end
+    end
+    
+    %% Shared Library
+    subgraph "Shared Components"
+        CU[iam-common-utilities<br/>Shared DTOs, Entities<br/>JWT Provider, Security<br/>Exception Handling]
+    end
+    
+    %% Database Layer
+    subgraph "Database Layer"
+        subgraph "PostgreSQL Cluster"
+            PG[(PostgreSQL<br/>Port 5432<br/>User Data<br/>Organizations<br/>Departments)]
+            ADM[Adminer<br/>Port 8080<br/>DB Admin UI]
+        end
+        
+        subgraph "MongoDB Cluster"
+            MG[(MongoDB<br/>Port 27017<br/>Chat Data<br/>Messages<br/>Rooms)]
+        end
+        
+        subgraph "Redis Cluster"
+            RD[(Redis<br/>Port 6379<br/>JWT Sessions<br/>WebSocket State<br/>Caching)]
+        end
+    end
+    
+    %% Infrastructure Layer
+    subgraph "Infrastructure & Security"
+        VT[HashiCorp Vault<br/>Port 8200<br/>Secrets Management]
+        DK[Docker Compose<br/>Infrastructure<br/>Orchestration]
+    end
+    
+    %% External Integrations
+    subgraph "External Services"
+        MAIL[Email Service<br/>SMTP/SendGrid]
+        FILE[File Storage<br/>AWS S3/MinIO]
+        PUSH[Push Notifications<br/>FCM/APNs]
+    end
+    
+    %% WebSocket Connections
+    subgraph "Real-time Layer"
+        WS[WebSocket Gateway<br/>ws://localhost:8083/ws/chat<br/>JWT Authentication<br/>Live Messaging]
+    end
+    
+    %% Connection Flows
+    %% Frontend to Services
+    FE -->|HTTP/REST| GW
+    FE -->|HTTP/REST<br/>JWT Auth| US
+    FE -->|HTTP/REST<br/>Login/Token| AS
+    FE -->|HTTP/REST<br/>Chat API| CS
+    FE -->|WebSocket<br/>Real-time| WS
+    
+    %% API Gateway Routes
+    GW -->|Route /users/*| US
+    GW -->|Route /auth/*| AS
+    GW -->|Route /chat/*| CS
+    GW -->|Route /authz/*| AZ
+    GW -->|Route /notify/*| NS
+    
+    %% Service Dependencies
+    US -->|Depends on| CU
+    AS -.->|Depends on| CU
+    CS -->|Depends on| CU
+    AZ -->|Depends on| CU
+    NS -->|Depends on| CU
+    
+    %% WebSocket Integration
+    WS -->|Managed by| CS
+    
+    %% Database Connections
+    US -->|JPA/Hibernate<br/>User CRUD| PG
+    AS -->|JPA/Hibernate<br/>User Lookup<br/>Auth Validation| PG
+    CS -->|JPA/Hibernate<br/>User Lookup| PG
+    CS -->|Reactive MongoDB<br/>Chat Data| MG
+    
+    %% Redis Connections
+    AS -->|JWT Storage<br/>Session Management| RD
+    CS -->|WebSocket State<br/>Online Users| RD
+    
+    %% Admin Tools
+    ADM -->|Admin Interface| PG
+    
+    %% Service Communication Patterns
+    subgraph "Communication Patterns"
+        subgraph "Current Implementation"
+            C1[Direct Database Access<br/>Shared PostgreSQL<br/>Shared Common Utils<br/>Service-to-Service Ready]
+        end
+        
+        subgraph "Enhanced Architecture"
+            C2[API Gateway Routing<br/>REST/gRPC Calls<br/>Event-Driven Messaging<br/>External Integrations]
+        end
+    end
+    
+    %% Infrastructure Management
+    DK -->|Orchestrates| PG
+    DK -->|Orchestrates| MG
+    DK -->|Orchestrates| RD
+    DK -->|Orchestrates| VT
+    DK -->|Orchestrates| ADM
+    
+    %% Security & Secrets
+    VT -->|Secrets<br/>DB Credentials<br/>JWT Keys| US
+    VT -->|Secrets| AS
+    VT -->|Secrets| CS
+    VT -->|Secrets| AZ
+    VT -->|Secrets| NS
+    
+    %% External Service Integration
+    NS -->|Email Notifications| MAIL
+    CS -->|File Attachments| FILE
+    NS -->|Mobile Push| PUSH
+    
+    %% Data Flow Annotations
+    classDef implemented fill:#d4f4dd,stroke:#4caf50,stroke-width:3px
+    classDef infrastructure fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+    classDef database fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
+    classDef external fill:#fce4ec,stroke:#e91e63,stroke-width:2px
+    
+    %% Apply Styles
+    class US,AS,CS,PG,MG,RD,FE,CU,DK,ADM,VT,WS,GW,AZ,NS implemented
+    class MAIL,FILE,PUSH external
+    class DK,VT infrastructure
+    class PG,MG,RD,ADM database
+    class MAIL,FILE,PUSH external
+    
+    %% Port Information
+    subgraph "Port Mapping - All Services Running"
+        P1[3000 - React Frontend]
+        P2[8080 - API Gateway]
+        P3[8081 - User Service]
+        P4[8082 - Auth Service]  
+        P5[8083 - Chat Service]
+        P6[8084 - Authorization Service]
+        P7[8085 - Notification Service]
+        P8[5432 - PostgreSQL]
+        P9[27017 - MongoDB]
+        P10[6379 - Redis]
+        P11[8200 - Vault]
+        P12[8080 - Adminer]
+    end
