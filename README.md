@@ -57,16 +57,8 @@ This monorepo hosts multiple microservices. Each microservice has its own Git re
 ## 🏗 Architecture Diagrams
 
 ### System Overview Diagram  
-*(Placeholder for high-level system architecture showing services and their interactions)*
 
-
-
----
-
-### Database & Service Interaction Diagram  
-*(Placeholder for detailed database schema and how services connect to the DB and each other)*
-
-
+![Architecture Diagram](https://github.com/malak29/iam-microservices-platform/blob/master/architecture/architechture_diagram.png?raw=true)
 
 ---
 
